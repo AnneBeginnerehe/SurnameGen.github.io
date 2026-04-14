@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Generator Nazwisk - Alpha 1.0</title>
+<link rel="stylesheet" type="text/css" href="uwu.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Comforter&family=Festive&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<h1>Surnames generator</h1>
+<select id="category">
+    <option value="Niemieckie">Niemieckie</option>
+    <option value="Rosyjskie">Rosyjskie</option>
+    <option value="Włoskie">Włoskie</option>
+    <option value="Francuskie">Francuskie</option>
+    <option value="Hiszpańskie">Hiszpańskie</option>
+    <option value="Portugalskie">Portugalskie</option>
+    <option value="Brytyjskie">Brytyjskie</option>
+    <option value="Arabskie">Arabskie</option>
+    <option value="Chińskie">Chińskie</option>
+    <option value="Hebrajskie">Hebrajskie</option>
+    <option value="Ukraińskie">Ukraińskie</option>
+    <option value="Czeskie">Czeskie</option>
+    <option value="Słowackie">Słowackie</option>
+</select>
+<br>
+<button type="button" onclick="generateSurname()">Generuj Nazwisko</button>
+<div class="result" id="result"></div>
+
+<script>
+const data = {
+    Niemieckie: {
+        prefix: ["Müll", "Schmi", "Schneider", "Fisch", "Web", "Mey", "Wagner", "Beck", "Schulz", "Hoff", "Schä", "Koch", "Bau", "Richt", "Klein", "Wolf", "Schröd", "Neu", "Schwarz", "Zimmer", "Braun", "Krüg", "Hof", "Lang", "Schmi", "Wern", "Schmi", "Kraus", "Mei", "Leh", "Schmid", "Schulz", "Mai", "Köhl", "Herr", "Walt", "May", "Frank"],
+        suffix: ["er", "mann", "berg", "stein", "hoff", "mann", "er", "er", "mann", "hoff", "er", "mann", "er", "mann", "er", "mann", "er", "mann", "er", "mann"],
+    },
+    Rosyjskie: {
+        prefix: ["Ivan", "Smirn", "Kuznet", "Pop", "Vasil", "Petr", "Sokol", "Mikhail", "Fedo", "Moroz", "Volk", "Alekse", "Lebed", "Novik", "Semen", "Egor", "Pavl", "Kozlov", "Stepanov", "Nikolaev", "Orlov", "Andreev", "Yakov", "Zaits", "Solo", "Gus", "Tikho", "Kharito", "Shishk", "Belov", "Kisel", "Grigor", "Kondrat", "Frol"],
+        suffix: ["ov", "ev", "in", "sky", "ova", "eva", "ina", "skaya", "ova", "eva", "ina", "skaya"],
+    },
+    Włoskie: {
+        prefix: ["Rossi", "Russo", "Ferra", "Bian", "Roman", "Colomb", "Ricci", "Mari", "Greco", "Bruno", "Gallo", "Conti", "De Luca", "Mancini", "Costa", "Giord", "Rizzo", "Lombar", "More", "Barbie", "Font", "Santo", "Mariani", "Rinal", "Caru", "Ferra", "Gat", "Marti", "Leon", "Long", "Gent", "Vit", "San", "Pir", "Cappe", "Sorren", "D'Ange", "Gras"],
+        suffix: ["ini", "ani", "etti", "elli", "otti", "ucci", "acci", "elli", "etti", "ini", "ani", "etti", "elli", "otti", "ucci", "acci", "elli", "etti", "ini", "ani"],
+    },
+    Francuskie: {
+        prefix: ["Martin", "Bernard", "Dubois", "Thomas", "Robert", "Richard", "Petit", "Durand", "Leroy", "Moreau", "Simon", "Laurent", "Lefebvre", "Michel", "Garcia", "David", "Bertrand", "Roux", "Vincent", "Fournier"],
+        suffix: ["eau", "ier", "on", "in", "et", "ot", "ard", "el", "in"],
+    },
+    Hiszpańskie: {
+        prefix: ["Garc", "Martínez", "Lóp", "Sánch", "Pér", "Gonzál", "Rodríg", "Fernánd", "Góm", "Díaz", "Álvar", "More", "Muñ", "Rome", "Alon", "Gutiér", "Navar", "Torre", "Domíng"],
+        suffix: ["ez", "es", "os", "as","ía","ues"],
+    },
+    Portugalskie: {
+        prefix: ["Silv", "Sant", "Ferreir", "Pereir", "Oliveir", "Cost", "Rodrigu", "Martin", "Gom", "Almeid", "Lop", "Carvalho", "Ribeiro", "Fernand", "Als", "Vieir", "Mour", "Barbos", "Cast"],
+        suffix: ["es", "as", "os","o"],
+    },
+    Brytyjskie: {
+        prefix: ["Smith", "John", "William", "Brown", "Jon", "Mill", "Davi", "Wils", "Martin", "Ander", "Tayl", "Thomas", "Hernand", "Moore", "Martin", "Jack", "Thomp", "White", "Lop", "Lee", "Gonzal", "Harri", "Clark", "Lewis", "Robin", "Walk", "Per", "Hall", "Young", "All", "Sanch", "Wright", "King", "Scott", "Green", "Bake", "Adam", "Nel"],
+        suffix: ["son", "ton", "ley", "ford", "ham", "wood", "field", "well", "brook", "stone", "worth", "ridge", "cliff", "dale", "burn", "shaw", "hurst", "worth", "ley",]
+    },
+    Arabskie: {
+        prefix: ["Al-Farsi", "Al-Hassan", "Al-Mansour", "Al-Rashid", "Al-Sabah", "Al-Zahra", "Al-Khalifa", "Al-Nasser", "Al-Qasim", "Al-Amiri", "Al-Farouq", "Al-Hadi", "Al-Mu'tasim", "Al-Rafiq", "Al-Salim", "Al-Zaki", "Al-Karim", "Al-Najjar", "Al-Qadir", "Al-Amir"],
+        suffix: ["i", "y"],
+    },
+    Chińskie: {
+        prefix: ["Wang", "Li", "Zhang", "Liu", "Chen", "Yang", "Huang", "Zhao", "Wu", "Zhou", "Xu", "Sun", "Ma", "Zhu", "Hu", "Guo", "He", "Gao", "Lin", "Luo", "Zheng", "Xie", "Cao", "Deng", "Fang", "Qian", "Tan", "Yuan", "Shen", "Yu", "Lao"],
+        suffix: ["long", "ming", "hua", "feng", "lei", "xian", "ping", "yun", "zhen", "qiang", "wei", "hong", "jian", "lei", "xue", "yan", "bin", "shui", "tian", "cheng", "jin"],
+    },
+    Hebrajskie: {
+        prefix: ["Al-Farsi", "Al-Hassan", "Al-Mansour", "Al-Rashid", "Al-Sabah", "Al-Zahra", "Al-Khalifa", "Al-Nasser", "Al-Qasim", "Al-Amiri"],
+        suffix: ["i", "y", "a", "e", "o", "u", "al", "el", "il", "ul", "ol"],
+    },
+    Ukraińskie: {
+        prefix: ["Shev", "Koval", "Boyko", "Melnyk", "Krav", "Bondar", "Tka", "Khmelni", "Dovzh", "Yarem", "Klymen", "Klymch", "Savo", "Pal", "Myron", "Ostap","Fedor", "Kozak","Humen","Zakhar","Kyry","Anton","Sytn","Yasch","Schur", "Kryve","Ivan", "Havry","Lev","Zakhar","Kyry","Luts","Dymed","Dzyu", "Kysi","Lysy", "Roman","Dotse", "Panasy","Sush","Tsymbal","Koten","Bil","Hajd"],
+        suffix: ["enko", "ko", "chenko", "chuk", "shchuk", "yshchuk","jd","ily","syuk","ov","oval","zhuk","ashchuk","yna","lyuk","vej"],
+    },
+    Czeskie: {
+        prefix: ["Nov", "Svobod", "Novot", "Dvoř", "Čern", "Prochá", "Kučer", "Vesel", "Horá", "Jelín", "Král", "Růži", "Beneš", "Fiala", "Krejčí", "Kolář", "Marek", "Pavlí", "Sýkor", "Vávra"],
+        suffix: ["ek", "ák", "ný"],
+    },
+    Słowackie: {
+        prefix: ["Kováč", "Horvá", "Varga", "Tóth", "Nagy", "Baláž", "Mlynár", "Farkaš", "Krajčír", "Pavlík"],
+        suffix: ["ek", "ák", "ný"],
+    },
+};
+function generateSurname() {
+    const category = document.getElementById("category").value;
+    const prefix = data[category].prefix[Math.floor(Math.random() * data[category].prefix.length)];
+    const suffix = data[category].suffix[Math.floor(Math.random() * data[category].suffix.length)];
+    const surname = prefix + suffix;
+    document.getElementById("result").textContent = surname;
+}
+
+</script>
+<div class="contact">
+    <h2>Kontakt 📩</h2>
+
+    <form action="mailto:a.herbacianka123@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Twoje imię/nick" optional>
+        <input type="email" name="email" placeholder="Twój email" required>
+        <textarea name="message" placeholder="Opisz swój problem/pomysł" required></textarea>
+        <button type="submit">Sent!</button>
+    </form>
+</div>
+<footer>
+    wersja generatora: v1.0. Pisz do Supportu jak masz problemy/pomysły
+</footer>
+</div>
+</body>
+</html>

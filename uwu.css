@@ -1,0 +1,151 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-image: url("Aesthethic.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    margin: 50px auto;
+    box-sizing: border-box;
+
+    color: #ffffff;
+
+    /* 🔥 półprzezroczyste pudełko */
+    background-color: rgba(0, 0, 0, 0.5);
+
+    /* ✨ glass effect */
+    backdrop-filter: blur(10px);
+
+    /* 🐱 tylko kot zostaje */
+    background-image: url("BurgerCat.jpg");
+    background-size: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+h1 {
+    text-align: center;
+    font-size: 1.8em;
+    font-family: 'Comforter', cursive;
+    color: #000000;
+    text-shadow: 2px 2px 4px #ffffff; /* poprawione */
+}
+
+button {
+    background-color: #adadad;
+    font-family: 'Comforter', cursive;
+    font-size: 20px;
+    color: #5e5e5e;
+    border: dotted 3px #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    width: 100%;            /* równa szerokość */
+    max-width: 250px;       /* ograniczenie */
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-sizing: border-box;
+}
+
+button:hover {
+    background-color: #e7e7e7;
+}
+
+button:active {
+    background-color: #2d2d2d;
+    transform: scale(0.98);
+}
+
+button:focus {
+    outline: 2px dotted #818181;
+    outline-offset: 3px;
+}
+
+select {
+    background-color: #879fae;
+    font-family: 'Comforter', cursive;
+    font-size: 1.5em;
+    color: #000000;
+    border: dotted 2px #ffffff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;           /* kluczowe */
+    max-width: 250px;
+    display: block;
+    box-sizing: border-box;
+}
+
+#result {
+    text-align: center;
+    font-family: 'Shadows Into Light', cursive;
+    font-weight: 400;
+    font-size: 1.5em;
+    margin-top: 20px;
+    color: #000000;
+}
+.contact {
+    margin-top: 20px;
+    width: 100%;
+    font-family: 'Caveat', straight;
+    max-width: 300px;
+    text-align: center;
+    color: #575757;
+}
+
+.contact h2 {
+    margin-bottom: 10px;
+    color: #343434;
+    text-shadow: 2px 2px 4px #212121;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+    background-color: #ffffff33;
+    color: white;
+    backdrop-filter: blur(5px);
+}
+
+.contact textarea {
+    min-height: 80px;
+    resize: none;
+}
+
+.contact button {
+    width: 100%;
+    margin-top: 10px;
+}
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 15px;
+    color: #ffffff;
+    background-color: #00000050;
+    font-size: 0.9em;
+    backdrop-filter: blur(5px);
+}
